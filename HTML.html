@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Developer Test Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1 id="title">BACKEND DEVELOPER TEST TOOL</h1>
+        <button id="pdfSave">PDF로 저장</button>
+    </div>
+
+    <section>
+        <h2>포트 사용 현황</h2>
+        <label for="ipInput">검색 IP:</label>
+        <input type="text" id="ipInput" placeholder="예: 127.0.0.1">
+        <label for="portInput">포트:</label>
+        <input type="text" id="portInput" placeholder="예: 8080">
+        <button id="checkPort">포트 체크</button>
+        <p id="portStatus">포트 상태가 여기 표시됩니다.</p>
+    </section>
+
+<!-- API 테스트 섹션 추가 -->
+<div class="api-test">
+    <h2>API 테스트</h2>
+    <label for="methodSelect">HTTP 메서드</label>
+    <select id="methodSelect">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+    </select>
+    
+    <label for="urlInput">URL</label>
+    <input type="text" id="urlInput" placeholder="API URL을 입력하세요">
+
+    <label for="headersTable">헤더</label>
+    <table id="headersTable">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input class="headerKey" type="text" placeholder="Header Key"></td>
+                <td><input class="headerValue" type="text" placeholder="Header Value"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <label for="jsonBody">본문 (JSON 형식)</label>
+    <textarea id="jsonBody" placeholder="요청 본문을 입력하세요 (JSON 형식만 가능)"></textarea>
+
+    <button id="sendRequest">요청 보내기</button>
+
+    <h3>응답</h3>
+    <pre id="responseOutput">응답 대기중</pre>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

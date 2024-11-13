@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #2196F3;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+h1:hover {
+    color: #1976D2;
+}
+
+button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1976D2;
+}
+
+section {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 5px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+}
+
+#checkPort, #sendRequest, #pdfSave {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#portStatus, #responseOutput {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f0f7fd;
+    border-left: 4px solid #2196F3;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #333;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+#responseOutput {
+    background: #e3f2fd;
+}
+
+#headersContainer h3, #headersContainer button {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#addHeader {
+    background-color: #64B5F6;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+#addHeader:hover {
+    background-color: #42A5F5;
+}
+
+#gameCanvas {
+    display: none;
+    border: 2px solid #2196F3;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+/* API 테스트 섹션 스타일링 추가 */
+.api-test {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.api-test h3 {
+    margin-bottom: 10px;
+}
+
+.api-test label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.api-test input, .api-test select, .api-test textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.api-test table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.api-test table th, .api-test table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.api-test button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.api-test button:hover {
+    background-color: #0056b3;
+}
+
+/* 헤더 테이블 */
+#headersTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#headersTable th, #headersTable td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#headersTable th {
+    background-color: #f2f2f2;
+}
+
+.deleteHeader {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.deleteHeader:hover {
+    background-color: #c82333;
+}
+
+#sendRequest {
+    background-color: #28a745;
+    margin-top: 20px;
+    padding: 10px 20px;
+}
+
+#sendRequest:hover {
+    background-color: #218838;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+input[type="text"], textarea {
+    font-size: 14px;
+}
