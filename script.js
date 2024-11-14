@@ -129,3 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const element = document.body;
         html2pdf().from(element).save();
     });
+
+    // 팩맨 게임 팝업
+    document.getElementById("title").addEventListener("click", function () {
+        window.open("pacman_game.html", "PacManGame", "width=400,height=400");
+    });
+    
