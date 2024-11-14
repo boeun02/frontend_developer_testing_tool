@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man Game</title>
+    <style>
+        /* 게임 화면 스타일 */
+        #gameContainer {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: black;
+            overflow: hidden;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .player, .target {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+        .player {
+            background-color: yellow;
+        }
+        .target {
+            background-color: red;
+        }
+        .score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: white;
+        }
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: red;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+</head>
+<body style="margin:0;">
+    <div id="gameContainer">
+        <div class="score" id="score">Score: 0</div>
+        <div class="game-over" id="gameOver">GAME OVER</div>
+        <div id="player" class="player"></div>
+        <div id="target" class="target"></div>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        const target = document.getElementById('target');
+        const scoreDisplay = document.getElementById('score');
+        const gameOverDisplay = document.getElementById('gameOver');
+        const container = document.getElementById('gameContainer');
+
+        let score = 0;
+        let playerSize = 20;
+        let playerX = 0;
+        let playerY = 0;
+        let targetX, targetY;
+        let speed = 2;  // 초기 속도
+        let direction = { x: 1, y: 0 }; // 초기 방향 오른쪽으로 설정
+
+        function resetTarget() {
+            targetX = Math.floor(Math.random() * (container.clientWidth - 20));
+            targetY = Math.floor(Math.random() * (container.clientHeight - 20));
+            target.style.left = targetX + 'px';
+            target.style.top = targetY + 'px';
+        }
+
+        resetTarget();
+
+        // 방향을 변경하는 이벤트 리스너
+        window.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'ArrowUp': direction = { x: 0, y: -1 }; break;
+                case 'ArrowDown': direction = { x: 0, y: 1 }; break;
+                case 'ArrowLeft': direction = { x: -1, y: 0 }; break;
+                case 'ArrowRight': direction = { x: 1, y: 0 }; break;
+            }
+        });
+
+        function updateGame() {
+            // 플레이어 위치 갱신
+            playerX += direction.x * speed;
+            playerY += direction.y * speed;
+
+            player.style.left = playerX + 'px';
+            player.style.top = playerY + 'px';
+
+            // 화면 밖으로 나가면 게임 오버
+            if (playerX < 0 || playerY < 0 || playerX + playerSize > container.clientWidth || playerY + playerSize > container.clientHeight) {
+                gameOver();
+                return;
+            }
+
+            // 플레이어가 타겟에 닿았을 경우
+            if (playerX < targetX + 20 && playerX + playerSize > targetX &&
+                playerY < targetY + 20 && playerY + playerSize > targetY) {
+                score++;
+                playerSize += 5;
+                speed += 1;  // 속도 증가
+                player.style.width = playerSize + 'px';
+                player.style.height = playerSize + 'px';
+                scoreDisplay.textContent = 'Score: ' + score;
+                resetTarget();
+            }
+        }
+
+        function gameOver() {
+            gameOverDisplay.style.display = 'block';
+            clearInterval(gameInterval);
+            setTimeout(() => { window.close(); }, 2000);
+        }
+
+        // 게임 업데이트 반복
+        const gameInterval = setInterval(updateGame, 50);  // 50ms 간격으로 업데이트
+    </script>
+</body>
+</html>
