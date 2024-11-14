@@ -4,6 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const ip = document.getElementById("ipInput").value;
         const port = document.getElementById("portInput").value;
 
+        // IP 주소나 포트 번호가 비어 있는 경우, 경고 메시지 표시
+        if (!ip && !port) {
+            alert("IP 주소와 포트 번호를 입력해 주세요.");
+            return;
+        }
+
+        if (!ip) {
+            alert("IP 주소를 입력해 주세요.");
+            return;
+        }
+
+        if (!port) {
+            alert("포트 번호를 입력해 주세요.");
+            return;
+        }
+
+        // 포트 상태 확인 API 호출
         fetch(`http://localhost:8080/checkPort?ip=${ip}&port=${port}`, {
             method: 'GET',
             mode: 'cors'
