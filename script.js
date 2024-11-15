@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+    // api 테스트 부분
     document.getElementById("sendRequest").addEventListener("click", async function() {
         const method = document.getElementById("methodSelect").value;
         const url = document.getElementById("urlInput").value;
